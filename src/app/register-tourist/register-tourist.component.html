@@ -1,0 +1,87 @@
+<div class="container" ng-app>
+    <h2>Register here</h2>
+    <hr>
+    <p>Please fill in this form to create a tourist record.</p>
+        <div>
+            <form name="myForm" novalidate (ngSubmit)="touristRegister()">
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="firstname">First Name</label>
+                        <input type="text" class="form-control" id="firstname" name="fname" [(ngModel)]="tourist.firstName" ng-required="true" maxlength="15" pattern="^[a-zA-Z_]*$" />
+
+                        <span ng-show="myForm.fname.$touched && myForm.fname.$error.required" style="color: red;">
+                            First Name is required.
+                        </span>
+                        <span ng-show="myForm.fname.$error.pattern" style="color: red;">
+                            Name must not contain a number.
+                        </span>
+                    </div>
+                    <div class="form-group col">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" class="form-control" id="lastname" name="lname" [(ngModel)]="tourist.lastName" ng-required="true" maxlength="12" pattern="^[a-zA-Z_]*$" />
+
+                        <span ng-show="myForm.lname.$touched && myForm.lname.$error.required" style="color: red;">
+                            Last Name is required.
+                        </span>
+                        <span ng-show="myForm.lname.$error.pattern" style="color: red;">
+                            Name must not contain a number.
+                        </span>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="id">Id</label>
+                        <input type="number" class="form-control" id="id" name="id" [(ngModel)]="tourist.id" ng-required="true" maxlength="4">
+                        <span ng-show="myForm.id.$touched && myForm.id.$error.required" style="color: red;">
+                            Id is required.
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="form-control">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" [(ngModel)]="tourist.gender" ng-required="true" value="male" />
+                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" [(ngModel)]="tourist.gender" ng-required="true" value="female" />
+                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                            </div>       
+                        </div>
+                        <span ng-show="myForm.gender.$invalid && myForm.gender.$error.required" style="color: red;">
+                            Gender is required.
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" name="age" [(ngModel)]="tourist.age" ng-required="true" minlength="2" max="90"/>
+                        <span ng-show="myForm.age.$touched && myForm.age.$error.required" style="color: red;">
+                            Age is required.
+                        </span>
+                        <span ng-show="myForm.age.$error.minlength || myForm.age.$error.max" style="color: red;">
+                            Age must be between 10 to 90.
+                        </span>
+                    </div> 
+                    <div class="form-group">
+                        <label for="fromplace">From Place</label>
+                        <input type="text" class="form-control" id="fromplace" name="fromplace" [(ngModel)]="tourist.fromPlace" ng-required="true" pattern="^[a-zA-Z_]*$">
+                        <span ng-show="myForm.fromplace.$touched && myForm.fromplace.$error.required" style="color: red;">
+                            From Place is required.
+                        </span>
+                        <span ng-show="myForm.fromplace.$error.pattern" style="color: red;">
+                            This field can take only alphabets. Please enter a place with alphabets only.
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="noofdays">Number of days</label>
+                        <input type="number" class="form-control" id="noofdays" name="noofdays" [(ngModel)]="tourist.numberOfdaysVisits" ng-required="true">
+                        <span ng-show="myForm.noofdays.$touched && myForm.noofdays.$error.required" style="color: red;">
+                            Number of days is required.
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Register</button>
+                    </div>               
+                </div>        
+            </form>
+    </div>
+</div>
